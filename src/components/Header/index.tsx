@@ -6,12 +6,12 @@ import {
     Title,
     Icon,
     Button,
-    Inpunt,
+    Input,
 } from './styles';
 
 export const Header = () => {
 
-    const [onFocused, setOnFocused] = useState(true);
+    const [onFocused, setOnFocused] = useState(false);
 
     return (
         <Container>
@@ -33,7 +33,8 @@ export const Header = () => {
                         <Button onPress={() => setOnFocused(!onFocused)}>
                             <Icon name="close" />
                         </Button>
-                        <Inpunt
+                        <Input
+                            placeholder="Busque por uma cidade"
                             autoFocus
                         />
                     </Content>

@@ -8,7 +8,7 @@ export const Container = styled.View`
     flex-direction: row;
     align-items: flex-end;
     padding: 0 20px;
-    padding-bottom: 16px;
+    padding-bottom: 10px;
     box-shadow: 0px 3px 3px rgba(0,0,0,0.15);
 `;
 
@@ -17,6 +17,7 @@ export const Content = styled.View`
     justify-content: space-between;
     flex-direction: row;
     align-items: center;
+    min-height: ${RFValue(32)}px;
 `;
 
 export const Title = styled.Text`
@@ -32,8 +33,12 @@ export const Icon = styled(Ionicons)`
 
 export const Button = styled.TouchableOpacity``;
 
-export const Inpunt = styled.TextInput`
+export const Input = styled.TextInput.attrs({
+    placeholderTextColor: "#eaeaea",
+})`
     flex: 1;
     height: ${RFValue(32)}px;
-    padding: 0 10px;
+    padding: 0 16px;
+    color: ${({ theme }) => theme.colors.text_white};
+    font-size: ${RFValue(14)}px;
 `;
