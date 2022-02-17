@@ -18,8 +18,11 @@ interface Props {
 }
 
 export const CardCity = ({ city }: Props) => {
+
     return (
-        <Container activeOpacity={0.5}>
+        <Container
+            activeOpacity={0.5}
+        >
 
             <Content>
                 <Title>
@@ -31,17 +34,17 @@ export const CardCity = ({ city }: Props) => {
                 </Locale>
 
                 <WeatherInfor>
-                    Chuva
+                    {city?.weather?.weather_description}
                 </WeatherInfor>
 
                 <TemperatureDetail>
-                    23° - 31°
+                    {`${city?.weather?.temp_min.toFixed(0)}° - ${city?.weather?.temp_max.toFixed(0)}°`}
                 </TemperatureDetail>
             </Content>
 
             <ContentRight>
                 <Temperature>
-                    18°
+                    {`${city?.weather?.temp.toFixed(0)}°`}
                 </Temperature>
                 <Favorite name="heart-outline" />
             </ContentRight>

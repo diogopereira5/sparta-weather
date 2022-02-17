@@ -1,3 +1,13 @@
+export interface WeatherProps {
+    temp: number,
+    feels_like: number,
+    temp_min: number,
+    temp_max: number,
+    weather_main: string,
+    weather_description: string,
+    weather_icon: string,
+}
+
 export interface CityProps {
 
     id: string,
@@ -7,6 +17,6 @@ export interface CityProps {
     country: string,
     longitude: Number,
     latitude: Number,
-    weather?: string,
+    weather?: WeatherProps,
 
 }

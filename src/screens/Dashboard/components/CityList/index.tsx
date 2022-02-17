@@ -34,11 +34,20 @@ export const CityList = ({ cities }: Props) => {
 
             cities.forEach(async (item) => {
 
-                await openWeatherApi.get(`?lon=${item.longitude}&lat=${item.latitude}&APPID=${API_TOKEN}`)
+                //api openWeatherAPI
+                await openWeatherApi.get(`?lon=${item.longitude}&lat=${item.latitude}&lang=pt_br&units=metric&APPID=${API_TOKEN}`)
                     .then((res: any) => {
                         data.push({
                             ...item,
-                            weather: res.data?.weather[0],
+                            weather: {
+                                temp: res.data?.main?.temp,
+                                feels_like: res.data?.main?.feels_like,
+                                temp_min: res.data?.main?.temp_min,
+                                temp_max: res.data?.main?.temp_max,
+                                weather_main: res.data?.weather[0]?.main,
+                                weather_description: res.data?.weather[0]?.description,
+                                weather_icon: res.data?.weather[0]?.icon,
+                            },
                         })
                     })
                     .catch((err: any) => {
