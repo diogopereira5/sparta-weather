@@ -8,7 +8,7 @@ const initialState: SearchState = {
 const reducer: Reducer<SearchState, FetchAction> = (state = initialState, action: FetchAction) => {
 
   switch (action.type) {
-    case SearchTypes.GET_SEARCH_REQUEST:
+    case SearchTypes.SET_SEARCH_SUCCESS:
       return { ...state, search: action.payload };
 
     default:

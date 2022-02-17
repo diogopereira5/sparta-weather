@@ -1,14 +1,18 @@
 import React from 'react';
 import AppLoading from 'expo-app-loading';
 import { ThemeProvider } from 'styled-components';
+import { Provider } from 'react-redux';
+
 import {
   useFonts,
   Roboto_400Regular,
   Roboto_500Medium,
 } from "@expo-google-fonts/roboto";
 
-import Dashboard from './src/screens/Dashboard';
+import { store } from './src/store';
 import theme from './src/styles/theme';
+
+import Dashboard from './src/screens/Dashboard';
 
 export default function App() {
 
@@ -21,8 +25,10 @@ export default function App() {
   if (!fontsLoaded) return <AppLoading />
 
   return (
-    <ThemeProvider theme={theme}>
-      <Dashboard />
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <Dashboard />
+      </ThemeProvider>
+    </Provider>
   )
 }
