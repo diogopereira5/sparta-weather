@@ -1,7 +1,6 @@
 import React from 'react';
-import { Text } from 'react-native';
-import { CardNewCity } from '../../../../components/CardNewCity';
 
+import { CardNewCity } from '../../../../components/CardNewCity';
 import { CityProps } from '../../../../types/CityProps.interface';
 
 import {
@@ -13,7 +12,7 @@ interface Props {
   cities: CityProps[];
 }
 
-export const SearchCity = ({ cities }: Props) => {
+export const SearchList = ({ cities }: Props) => {
 
   return (
     <Container>

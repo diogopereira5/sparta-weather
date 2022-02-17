@@ -5,5 +5,7 @@ export interface CityProps {
     place_name: string,
     state: string,
     country: string,
+    longitude: Number,
+    latitude: Number,
 
 }

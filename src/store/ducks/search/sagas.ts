@@ -23,6 +23,8 @@ function* handleSearchCity(action: FetchAction) {
             place_name: item.place_name,
             state: item.context[0]?.text,
             country: item.context[1]?.text,
+            longitude: item.geometry.coordinates[0],
+            latitude: item.geometry.coordinates[1]
           });
 
         });

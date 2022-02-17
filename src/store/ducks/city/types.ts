@@ -1,14 +1,16 @@
+import { CityProps } from "../../../types/CityProps.interface";
+
 export enum CityTypes {
-  GET_CITY_REQUEST = '@city/GET_CITY_REQUEST',
-  GET_CITY_SUCCESS = '@city/GET_CITY_SUCCESS',
+  STORE_CITY_REQUEST = '@city/STORE_CITY_REQUEST',
+  STORE_CITY_SUCCESS = '@city/STORE_CITY_SUCCESS',
 }
 
 export interface City {
-  city: any,
+  city: CityProps[],
 }
 
 export interface CityState {
-  readonly city: any;
+  readonly city: CityProps[];
 }
 
 export interface FetchAction {

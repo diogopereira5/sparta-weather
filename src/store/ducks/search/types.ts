@@ -1,3 +1,5 @@
+import { CityProps } from "../../../types/CityProps.interface";
+
 export enum SearchTypes {
   GET_SEARCH_REQUEST = '@search/GET_SEARCH_REQUEST',
   SET_SEARCH_SUCCESS = '@search/SET_SEARCH_SUCCESS',
@@ -5,11 +7,11 @@ export enum SearchTypes {
 }
 
 export interface Search {
-  search: any,
+  search: CityProps[],
 }
 
 export interface SearchState {
-  readonly search: any;
+  readonly search: CityProps[];
 }
 
 export interface FetchAction {
