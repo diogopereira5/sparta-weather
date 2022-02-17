@@ -27,7 +27,7 @@ const Dashboard: React.FC = () => {
       <Content>
 
         {
-          listSearch ?
+          listSearch && listSearch.length > 0 ?
             <SearchList cities={listSearch} />
             :
             citiesStored ?

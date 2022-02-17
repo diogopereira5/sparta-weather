@@ -1,4 +1,5 @@
 import React from 'react';
+import { Text } from 'react-native';
 import { CardCity } from '../../../../components/CardCity';
 import { CityProps } from '../../../../types/CityProps.interface';
 
