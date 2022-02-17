@@ -19,7 +19,7 @@ interface Props {
 
 export const CardCity = ({ city }: Props) => {
     return (
-        <Container>
+        <Container activeOpacity={0.5}>
 
             <Content>
                 <Title>

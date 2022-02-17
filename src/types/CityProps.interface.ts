@@ -7,5 +7,6 @@ export interface CityProps {
     country: string,
     longitude: Number,
     latitude: Number,
+    weather?: string,
 
 }
