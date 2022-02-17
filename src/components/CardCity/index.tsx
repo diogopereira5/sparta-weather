@@ -43,7 +43,7 @@ export const CardCity = ({ city }: Props) => {
                 <Temperature>
                     18°
                 </Temperature>
-                <Favorite name="heart" />
+                <Favorite name="heart-outline" />
             </ContentRight>
 
         </Container>

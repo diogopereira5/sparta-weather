@@ -29,7 +29,7 @@ export const Locale = styled.Text`
     font-family: ${({ theme }) => theme.fonts.regular};
     color: ${({ theme }) => theme.colors.text_detail};
     font-size: ${RFValue(12)}px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 `;
 
 export const WeatherInfor = styled.Text`
@@ -48,12 +48,11 @@ export const TemperatureDetail = styled.Text`
 export const Temperature = styled.Text`
     font-family: ${({ theme }) => theme.fonts.regular};
     color: ${({ theme }) => theme.colors.primary};
-    font-size: ${RFValue(24)}px;
-    margin: 0px 10px;
+    font-size: ${RFValue(34)}px;
 `;
 
 export const Favorite = styled(Ionicons)`
-    margin: 0px 15px 10px 0px;
+    margin: 5px;
     color: ${({ theme }) => theme.colors.secondary};
     font-size: ${RFValue(24)}px;
 `;
