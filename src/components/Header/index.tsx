@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { getSearchRequest } from '../../store/ducks/search/actions';
 
 import {
     Container,
@@ -6,12 +8,28 @@ import {
     Title,
     Icon,
     Button,
-    Inpunt,
+    Input,
 } from './styles';
 
 export const Header = () => {
 
-    const [onFocused, setOnFocused] = useState(true);
+    const dispatch = useDispatch();
+
+    const [onFocused, setOnFocused] = useState(false);
+    const [valueSearch, setValueSearch] = useState("");
+
+    function handleSearchCity() {
+
+        //busca por uma cidade na api mapbox
+        try {
+
+            dispatch(getSearchRequest(valueSearch));
+
+        } catch (err) {
+            console.log(err);
+        }
+
+    }
 
     return (
         <Container>
@@ -33,8 +51,12 @@ export const Header = () => {
                         <Button onPress={() => setOnFocused(!onFocused)}>
                             <Icon name="close" />
                         </Button>
-                        <Inpunt
+                        <Input
+                            placeholder="Busque por uma cidade"
+                            value={valueSearch}
+                            onChangeText={setValueSearch}
                             autoFocus
+                            onEndEditing={handleSearchCity}
                         />
                     </Content>
 
