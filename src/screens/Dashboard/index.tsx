@@ -12,10 +12,12 @@ import {
   Content,
 } from './styles';
 import { CityProps } from '../../types/CityProps.interface';
+import { CityList } from './components/CityList';
 
 const Dashboard: React.FC = () => {
 
-  const citiesSearch: CityProps[] = useSelector((state: ApplicationState) => state.search.search);
+  const listSearch: CityProps[] = useSelector((state: ApplicationState) => state.search.search);
+  const citiesStored: CityProps[] = useSelector((state: ApplicationState) => state.city.city);
 
   return (
     <Container>
@@ -25,11 +27,13 @@ const Dashboard: React.FC = () => {
       <Content>
 
         {
-          citiesSearch && citiesSearch.length > 0
-            ?
-            <SearchList cities={citiesSearch} />
+          listSearch ?
+            <SearchList cities={listSearch} />
             :
-            <Apresentation />
+            citiesStored ?
+              <CityList cities={citiesStored}/>
+              :
+              <Apresentation />
         }
 
       </Content>
