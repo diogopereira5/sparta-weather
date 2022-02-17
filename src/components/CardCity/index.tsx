@@ -23,11 +23,11 @@ export const CardCity = ({ city }: Props) => {
 
             <Content>
                 <Title>
-                    Blumenau
+                    {city.text}
                 </Title>
 
                 <Locale>
-                    Brasil
+                    {city.country}
                 </Locale>
 
                 <WeatherInfor>

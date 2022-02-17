@@ -31,7 +31,7 @@ const Dashboard: React.FC = () => {
             <SearchList cities={listSearch} />
             :
             citiesStored ?
-              <CityList cities={citiesStored}/>
+              <CityList cities={citiesStored} />
               :
               <Apresentation />
         }
