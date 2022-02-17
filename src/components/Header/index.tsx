@@ -65,6 +65,9 @@ export const Header = () => {
                             onChangeText={setValueSearch}
                             autoFocus
                             onEndEditing={handleSearchCity}
+                            onSubmitEditing={handleSearchCity}
+                            returnKeyType="search"
+                            numberOfLines={1}
                         />
                     </Content>
 
