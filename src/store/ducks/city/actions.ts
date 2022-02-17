@@ -1,5 +1,6 @@
 import { CityTypes } from './types';
 import { action } from 'typesafe-actions';
+import { CityProps } from '../../../types/CityProps.interface';
 
-export const getCityRequest = (payload: string) => action(CityTypes.GET_CITY_REQUEST, payload);
-export const getCitySuccess = (payload: any) => action(CityTypes.GET_CITY_SUCCESS, payload);
+export const storeCityRequest = (payload: CityProps) => action(CityTypes.STORE_CITY_REQUEST, payload);
+export const storeCitySuccess = (payload: CityProps[]) => action(CityTypes.STORE_CITY_SUCCESS, payload);

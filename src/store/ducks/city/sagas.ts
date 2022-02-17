@@ -1,29 +1,32 @@
-import { put, takeLatest } from 'redux-saga/effects';
+import { takeLatest, put } from 'redux-saga/effects';
+import { store } from '../..';
+import { CityProps } from '../../../types/CityProps.interface';
+import { setCleanSearch } from '../search/actions';
+import { storeCitySuccess } from './actions';
 import { FetchAction, CityTypes } from './types';
 
-import { getCitySuccess } from "./actions";
-import mapBoxApi, { API_TOKEN } from '../../../service/mapBoxApi';
-
-function* getCities(action: FetchAction) {
+function* addNewCity(action: FetchAction) {
   try {
 
-    const { city } = action.payload;
+    var data: CityProps[] = [];
 
-    let success = null;
+    const city = action.payload;
+    const cityStore: CityProps[] = store.getState().city.city;
 
-    yield mapBoxApi.get(`/${city}/?types=place&access_token=${API_TOKEN}`)
+    if (cityStore) {
+      data = cityStore;
+    }
 
-      .then((res: any) => {
-        console.log(res.data);
-      })
+    if (city) {
+      data.push(city);
+    }
 
-      .catch((err: any) => {
-        console.log('error ', err);
-      });
+    console.log(data);
 
-    // if (success) {
-    //   yield put(getCitySuccess(success));
-    // }
+    if (data) {
+      yield put(storeCitySuccess(data));
+      yield put(setCleanSearch());
+    }
 
   } catch (e) {
     console.error(e)
@@ -32,5 +35,5 @@ function* getCities(action: FetchAction) {
 
 
 export default function* root() {
-  yield takeLatest(CityTypes.GET_CITY_REQUEST, getCities);
+  yield takeLatest(CityTypes.STORE_CITY_REQUEST, addNewCity);
 }

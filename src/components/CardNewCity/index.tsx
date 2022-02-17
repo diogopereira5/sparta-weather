@@ -1,5 +1,6 @@
 import React from 'react';
-import { View } from 'react-native';
+import { useDispatch } from 'react-redux';
+import { storeCityRequest } from '../../store/ducks/city/actions';
 import { CityProps } from '../../types/CityProps.interface';
 
 import {
@@ -15,6 +16,20 @@ interface Props {
 }
 
 export const CardNewCity = ({ city }: Props) => {
+
+    const dispatch = useDispatch();
+
+    function handleAddCity() {
+        try {
+
+            dispatch(storeCityRequest(city));
+
+        } catch (err) {
+            console.log(err);
+
+        }
+    }
+
     return (
         <Container>
 
@@ -29,7 +44,9 @@ export const CardNewCity = ({ city }: Props) => {
             </Locale>
 
             <Button>
-                <TextButton>
+                <TextButton
+                    onPress={handleAddCity}
+                >
                     Adicionar
                 </TextButton>
             </Button>

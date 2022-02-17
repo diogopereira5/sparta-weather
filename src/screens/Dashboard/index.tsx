@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Header } from '../../components/Header';
 import { Apresentation } from './components/Apresentation';
-import { SearchCity } from './components/SearchCity';
+import { SearchList } from './components/SearchList';
 
 import { useSelector } from 'react-redux';
 import { ApplicationState } from '../../store';
@@ -27,7 +27,7 @@ const Dashboard: React.FC = () => {
         {
           citiesSearch && citiesSearch.length > 0
             ?
-            <SearchCity cities={citiesSearch} />
+            <SearchList cities={citiesSearch} />
             :
             <Apresentation />
         }

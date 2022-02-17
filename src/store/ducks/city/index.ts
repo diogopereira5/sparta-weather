@@ -2,13 +2,13 @@ import { CityTypes, CityState, FetchAction } from './types';
 import { Reducer } from 'redux';
 
 const initialState: CityState = {
-  city: null,
+  city: [],
 };
 
 const reducer: Reducer<CityState, FetchAction> = (state = initialState, action: FetchAction) => {
 
   switch (action.type) {
-    case CityTypes.GET_CITY_REQUEST:
+    case CityTypes.STORE_CITY_SUCCESS:
       return { ...state, city: action.payload };
 
     default:
