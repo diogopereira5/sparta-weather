@@ -1,4 +1,4 @@
-export interface city_search {
+export interface CityProps {
 
     id: string,
     text: string,

@@ -11,6 +11,9 @@ const reducer: Reducer<SearchState, FetchAction> = (state = initialState, action
     case SearchTypes.SET_SEARCH_SUCCESS:
       return { ...state, search: action.payload };
 
+    case SearchTypes.SET_CLEAN_SEARCH:
+      return { ...state, search: [] };
+
     default:
       return state;
   }

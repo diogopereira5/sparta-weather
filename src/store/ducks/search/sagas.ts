@@ -3,14 +3,14 @@ import { FetchAction, SearchTypes } from './types';
 
 import { setSearchSuccess } from "./actions";
 import mapBoxApi, { API_TOKEN } from '../../../service/mapBoxApi';
-import { city_search } from '../../../types/city_search.interface';
+import { CityProps } from '../../../types/CityProps.interface';
 
 function* handleSearchCity(action: FetchAction) {
   try {
 
     const city = action.payload;
 
-    let cities: city_search[] = [];
+    let cities: CityProps[] = [];
 
     yield mapBoxApi.get(`/${city}.json?types=place&limit=8&access_token=${API_TOKEN}`)
       .then((res: any) => {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { getSearchRequest } from '../../store/ducks/search/actions';
+import { getSearchRequest, setCleanSearch } from '../../store/ducks/search/actions';
 
 import {
     Container,
@@ -31,6 +31,14 @@ export const Header = () => {
 
     }
 
+    function handleCloseSearch() {
+
+        setOnFocused(false);
+        setValueSearch("");
+        dispatch(setCleanSearch());
+
+    }
+
     return (
         <Container>
             {
@@ -48,7 +56,7 @@ export const Header = () => {
                     :
 
                     <Content>
-                        <Button onPress={() => setOnFocused(!onFocused)}>
+                        <Button onPress={handleCloseSearch}>
                             <Icon name="close" />
                         </Button>
                         <Input

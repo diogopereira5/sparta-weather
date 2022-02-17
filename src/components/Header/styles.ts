@@ -28,7 +28,7 @@ export const Title = styled.Text`
 
 export const Icon = styled(Ionicons)`
     color: ${({ theme }) => theme.colors.text_white};
-    font-size: ${RFValue(18)}px;
+    font-size: ${RFValue(20)}px;
 `;
 
 export const Button = styled.TouchableOpacity``;
@@ -40,5 +40,5 @@ export const Input = styled.TextInput.attrs({
     height: ${RFValue(32)}px;
     padding: 0 16px;
     color: ${({ theme }) => theme.colors.text_white};
-    font-size: ${RFValue(14)}px;
+    font-size: ${RFValue(15)}px;
 `;
