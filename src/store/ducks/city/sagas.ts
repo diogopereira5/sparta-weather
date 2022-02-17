@@ -21,8 +21,6 @@ function* addNewCity(action: FetchAction) {
       data.push(city);
     }
 
-    console.log(data);
-
     if (data) {
       yield put(storeCitySuccess(data));
       yield put(setCleanSearch());

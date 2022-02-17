@@ -19,7 +19,7 @@ export const Locale = styled.Text`
     font-family: ${({ theme }) => theme.fonts.regular};
     color: ${({ theme }) => theme.colors.text_detail};
     font-size: ${RFValue(12)}px;
-    margin-bottom: 10px
+    margin-bottom: 10px;
 `;
 
 export const Button = styled.TouchableOpacity`
