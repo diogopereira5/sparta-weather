@@ -20,6 +20,10 @@ export const ContentHeader = styled.View`
     align-items: center;
 `;
 
+export const ContentBody = styled.ScrollView`
+    flex: 1;
+`;
+
 export const TitleHeader = styled.Text`
     font-family: ${({ theme }) => theme.fonts.medium};
     font-size: ${RFValue(18)}px;
@@ -27,13 +31,16 @@ export const TitleHeader = styled.Text`
     margin-left: 16px;
 `;
 
-export const List = styled.FlatList.attrs({
-    contentContainerStyle: { paddingVertical: 20 },
-    showsVerticalScrollIndicator: false,
-})``;
-
 export const ContentLoading = styled.View`
     align-items: center;
     justify-content: center;
     padding-top: ${RFPercentage(20)}px;
+`;
+
+export const TextInfor = styled.Text`
+    font-family: ${({ theme }) => theme.fonts.regular};
+    font-size: ${RFValue(12)}px;
+    color: ${({ theme }) => theme.colors.text_detail};  
+    text-align: center;
+    margin: 20px 0;
 `;

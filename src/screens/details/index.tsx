@@ -12,9 +12,11 @@ import {
     Container,
     Header,
     ContentHeader,
+    ContentBody,
     TitleHeader,
     List,
-    ContentLoading
+    ContentLoading,
+    TextInfor
 } from './styles';
 
 
@@ -59,7 +61,6 @@ const Details = ({ route }: any) => {
                     console.log(err);
                 }).finally(() => {
 
-                    console.log(data);
                     setForecastDaily(data);
                     setIsLoading(false);
 
@@ -95,11 +96,18 @@ const Details = ({ route }: any) => {
 
                     :
 
-                    <List
-                        data={forecastDaily}
-                        keyExtractor={(item: any) => item.date}
-                        renderItem={({ item }) => <CardWeather city={city} data={item} />}
-                    />
+                    <ContentBody
+                        showsVerticalScrollIndicator={false}
+                        contentContainerStyle={{ paddingBottom: 30, paddingTop: 10 }}
+                    >
+
+                        <TextInfor>Previsão para os próximos 7 dias</TextInfor>
+
+                        {
+                            forecastDaily.map((item) => <CardWeather city={city} data={item} key={item.date} />)
+                        }
+
+                    </ContentBody>
             }
         </Container>
     );

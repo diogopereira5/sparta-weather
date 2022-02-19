@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/core';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { CityProps } from '../../types/CityProps.interface';
 import { WeatherProps } from '../../types/CityWeatherinterface';
 
@@ -23,6 +23,25 @@ export const CardWeather = ({ city, data }: Props) => {
 
     const navigation = useNavigation();
 
+    const [date, setDate] = useState("");
+
+    useEffect(() => {
+
+        if (new window.Date(data.date * 1000).getDate() == new window.Date().getDate()) {
+            setDate("Hoje");
+        } else if (new window.Date(data.date * 1000).getDate() == (new window.Date().getDate() + 1)) {
+            setDate("Amanhã");
+        } else {
+            setDate(
+                String(Intl.DateTimeFormat('pt-BR', {
+                    weekday: "long"
+                }).format(new window.Date(data.date * 1000)))
+            )
+        }
+
+    }, [])
+
+
     return (
         <Container
             activeOpacity={0.5}
@@ -31,11 +50,18 @@ export const CardWeather = ({ city, data }: Props) => {
 
             <Content>
                 <Title>
-                    {data.date}
+                    {
+                        date
+                    }
                 </Title>
 
                 <Date>
-                    {data.date}
+                    {
+                        Intl.DateTimeFormat('pt-BR', {
+                            day: "numeric",
+                            month: "long"
+                        }).format(new window.Date(data.date * 1000))
+                    }
                 </Date>
 
                 <WeatherInfor>
