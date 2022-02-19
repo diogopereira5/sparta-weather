@@ -2,7 +2,7 @@ import { takeLatest, put } from 'redux-saga/effects';
 import { store } from '../..';
 import { CityProps } from '../../../types/CityProps.interface';
 import { setCleanSearch } from '../search/actions';
-import { storeCitySuccess } from './actions';
+import { deleteCitySuccess, storeCitySuccess } from './actions';
 import { FetchAction, CityTypes } from './types';
 
 function* addNewCity(action: FetchAction) {
@@ -31,7 +31,24 @@ function* addNewCity(action: FetchAction) {
   }
 }
 
+function* deleteCity(action: FetchAction) {
+
+  try {
+
+    var cities = store.getState().city.city;
+
+    cities = cities.filter((item) => item.id !== action.payload && item)
+
+    yield put(deleteCitySuccess(cities));
+
+  } catch (err) {
+    console.log(err);
+  }
+
+}
+
 
 export default function* root() {
   yield takeLatest(CityTypes.STORE_CITY_REQUEST, addNewCity);
+  yield takeLatest(CityTypes.DELETE_CITY_REQUEST, deleteCity);
 }

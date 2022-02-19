@@ -27,6 +27,8 @@ export const CardWeather = ({ city, data }: Props) => {
 
     useEffect(() => {
 
+
+        //formtando data
         if (new window.Date(data.date * 1000).getDate() == new window.Date().getDate()) {
             setDate("Hoje");
         } else if (new window.Date(data.date * 1000).getDate() == (new window.Date().getDate() + 1)) {

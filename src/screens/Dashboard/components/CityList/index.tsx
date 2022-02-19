@@ -25,7 +25,7 @@ export const CityList = ({ cities }: Props) => {
 
     useEffect(() => {
         loadWeatchForCities();
-    }, []);
+    }, [cities]);
 
     //busca tempo de cada cidade da storage
     async function loadWeatchForCities() {

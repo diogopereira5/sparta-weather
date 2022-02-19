@@ -14,17 +14,21 @@ import {
     ContentHeader,
     ContentBody,
     TitleHeader,
-    List,
     ContentLoading,
-    TextInfor
+    TextInfor,
+    Footer,
 } from './styles';
+import { useDispatch } from 'react-redux';
+import { deleteCityRequest } from '../../store/ducks/city/actions';
+import { CityProps } from '../../types/CityProps.interface';
 
 
 const Details = ({ route }: any) => {
 
     const theme = useTheme();
-    const { city } = route.params;
+    const city: CityProps = route.params?.city;
     const navigation = useNavigation();
+    const dispatch = useDispatch();
 
     const [forecastDaily, setForecastDaily] = useState<WeatherProps[]>([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -72,6 +76,23 @@ const Details = ({ route }: any) => {
         }
     }
 
+    function handleDeleteCity() {
+
+        try {
+
+            dispatch(deleteCityRequest(city.id));
+            goBack();
+
+        } catch (err) {
+            console.log(err);
+        }
+
+    }
+
+    function goBack() {
+        navigation.goBack()
+    }
+
     return (
         <Container>
 
@@ -79,7 +100,7 @@ const Details = ({ route }: any) => {
                 <ContentHeader>
                     <Button
                         leftIcon="chevron-back"
-                        onPress={() => navigation.goBack()}
+                        onPress={goBack}
                     />
                     <TitleHeader>
                         {city.text}
@@ -107,7 +128,20 @@ const Details = ({ route }: any) => {
                             forecastDaily.map((item) => <CardWeather city={city} data={item} key={item.date} />)
                         }
 
+                        <Footer>
+                            <Button
+                                label="Deletar Cidade"
+                                colorLabel={theme.colors.secondary}
+                                sizeLabel={14}
+                                leftIcon="ios-trash-outline"
+                                leftIconColor={theme.colors.secondary}
+                                leftIconSize={16}
+                                onPress={handleDeleteCity}
+                            />
+                        </Footer>
+
                     </ContentBody>
+
             }
         </Container>
     );

@@ -44,3 +44,7 @@ export const TextInfor = styled.Text`
     text-align: center;
     margin: 20px 0;
 `;
+
+export const Footer = styled.View`
+    margin: 10px 0;
+`;

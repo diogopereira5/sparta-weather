@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
+import { useFocusEffect } from '@react-navigation/core';
 import { Header } from '../../components/Header';
 import { Apresentation } from './components/Apresentation';
 import { SearchList } from './components/SearchList';
@@ -19,6 +20,24 @@ const Dashboard: React.FC = () => {
   const listSearch: CityProps[] = useSelector((state: ApplicationState) => state.search.search);
   const citiesStored: CityProps[] = useSelector((state: ApplicationState) => state.city.city);
 
+  const [cities, setCities] = useState<CityProps[]>([]);
+
+  useEffect(() => {
+    loadCities();
+  }, [])
+
+  useFocusEffect(useCallback(() => {
+    loadCities()
+  }, [citiesStored]))
+
+  function loadCities() {
+
+    if (citiesStored.length > 0) {
+      setCities(citiesStored);
+    }
+
+  }
+
   return (
     <Container>
 
@@ -30,8 +49,8 @@ const Dashboard: React.FC = () => {
           listSearch && listSearch.length > 0 ?
             <SearchList cities={listSearch} />
             :
-            citiesStored && citiesStored.length > 0 ?
-              <CityList cities={citiesStored} />
+            cities && cities.length > 0 ?
+              <CityList cities={cities} />
               :
               <Apresentation />
         }
