@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator } from "react-native";
+import { useDispatch, useSelector } from 'react-redux';
 import { useTheme } from 'styled-components';
 import { CardCity } from '../../../../components/CardCity';
 import openWeatherApi, { API_TOKEN } from '../../../../service/openWeatherApi';
@@ -30,13 +31,13 @@ export const CityList = ({ cities }: Props) => {
     async function loadWeatchForCities() {
         try {
 
-            var data: CityProps[] = [];
+            let data: CityProps[] = [];
 
             cities.forEach(async (item) => {
 
-                //api openWeatherAPI
-                await openWeatherApi.get(`?lon=${item.longitude}&lat=${item.latitude}&lang=pt_br&units=metric&APPID=${API_TOKEN}`)
+                await openWeatherApi.get(`/weather?lon=${item.longitude}&lat=${item.latitude}&lang=pt_br&units=metric&APPID=${API_TOKEN}`)
                     .then((res: any) => {
+
                         data.push({
                             ...item,
                             weather: {
@@ -49,16 +50,21 @@ export const CityList = ({ cities }: Props) => {
                                 weather_icon: res.data?.weather[0]?.icon,
                             },
                         })
+
                     })
                     .catch((err: any) => {
+
                         console.log(err);
-                    })
-                    .finally(() => {
-                        setIsLoading(false);
+
+                    }).finally(() => {
+
                         setCityWeather(data);
+
                     })
 
             });
+
+            setIsLoading(false);
 
         } catch (err) {
             console.log(err);

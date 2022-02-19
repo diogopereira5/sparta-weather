@@ -6,6 +6,6 @@ import search from './search/sagas';
 export default function* root() {
   yield all([
     city(),
-    search()
+    search(),
   ]);
 }
