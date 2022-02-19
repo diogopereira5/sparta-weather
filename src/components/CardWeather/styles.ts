@@ -1,6 +1,5 @@
-import { RFValue } from "react-native-responsive-fontsize";
 import styled from "styled-components/native";
-import { Ionicons } from "@expo/vector-icons"
+import { RFValue } from "react-native-responsive-fontsize";
 
 export const Container = styled.TouchableOpacity`
     background-color: ${({ theme }) => theme.colors.shape};
@@ -25,7 +24,7 @@ export const Title = styled.Text`
     font-size: ${RFValue(18)}px;
 `;
 
-export const Locale = styled.Text`
+export const Date = styled.Text`
     font-family: ${({ theme }) => theme.fonts.regular};
     color: ${({ theme }) => theme.colors.text_detail};
     font-size: ${RFValue(12)}px;
@@ -50,10 +49,4 @@ export const Temperature = styled.Text`
     font-family: ${({ theme }) => theme.fonts.regular};
     color: ${({ theme }) => theme.colors.primary};
     font-size: ${RFValue(34)}px;
-`;
-
-export const Favorite = styled(Ionicons)`
-    margin: 5px;
-    color: ${({ theme }) => theme.colors.secondary};
-    font-size: ${RFValue(24)}px;
 `;

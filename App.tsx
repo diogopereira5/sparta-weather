@@ -12,7 +12,7 @@ import {
 import { store } from './src/store';
 import theme from './src/styles/theme';
 
-import Dashboard from './src/screens/Dashboard';
+import Routes from "./src/routes";
 
 export default function App() {
 
@@ -27,7 +27,7 @@ export default function App() {
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <Dashboard />
+        <Routes />
       </ThemeProvider>
     </Provider>
   )

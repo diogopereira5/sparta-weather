@@ -30,7 +30,7 @@ const Dashboard: React.FC = () => {
           listSearch && listSearch.length > 0 ?
             <SearchList cities={listSearch} />
             :
-            citiesStored ?
+            citiesStored && citiesStored.length > 0 ?
               <CityList cities={citiesStored} />
               :
               <Apresentation />

@@ -10,9 +10,7 @@ const reducer: Reducer<CityState, FetchAction> = (state = initialState, action: 
 
   switch (action.type) {
     case CityTypes.STORE_CITY_SUCCESS:
-      return { ...state, city: action.payload };
-
-      case CityTypes.GET_ALL_CITIES_SUCCESS:
+      
       return { ...state, city: action.payload };
 
     default:

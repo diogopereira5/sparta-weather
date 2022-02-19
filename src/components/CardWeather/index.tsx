@@ -1,56 +1,56 @@
 import { useNavigation } from '@react-navigation/core';
-import React from 'react';
+import React, { useState } from 'react';
 import { CityProps } from '../../types/CityProps.interface';
+import { WeatherProps } from '../../types/CityWeatherinterface';
 
 import {
     Container,
     Content,
     ContentRight,
     Title,
-    Locale,
+    Date,
     WeatherInfor,
     TemperatureDetail,
     Temperature,
-    Favorite
 } from './styles';
 
 interface Props {
-    city: CityProps,
+    city: CityProps
+    data: WeatherProps,
 }
 
-export const CardCity = ({ city }: Props) => {
+export const CardWeather = ({ city, data }: Props) => {
 
     const navigation = useNavigation();
 
     return (
         <Container
             activeOpacity={0.5}
-            onPress={() => navigation.navigate("Details", { city })}
+            onPress={() => navigation.navigate("Details", { city_id: city.id })}
         >
 
             <Content>
                 <Title>
-                    {city.text}
+                    {data.date}
                 </Title>
 
-                <Locale>
-                    {city.country}
-                </Locale>
+                <Date>
+                    {data.date}
+                </Date>
 
                 <WeatherInfor>
-                    {city?.weather?.weather_description}
+                    {data?.weather_description}
                 </WeatherInfor>
 
                 <TemperatureDetail>
-                    {`${city?.weather?.temp_min.toFixed(0)}° - ${city?.weather?.temp_max.toFixed(0)}°`}
+                    {`${data?.temp_min.toFixed(0)}° - ${data?.temp_max.toFixed(0)}°`}
                 </TemperatureDetail>
             </Content>
 
             <ContentRight>
                 <Temperature>
-                    {`${city?.weather?.temp.toFixed(0)}°`}
+                    {`${data?.temp.toFixed(0)}°`}
                 </Temperature>
-                <Favorite name="heart-outline" />
             </ContentRight>
 
         </Container>
