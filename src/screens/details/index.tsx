@@ -12,17 +12,28 @@ import {
     Container,
     Header,
     ContentHeader,
+    ContentBody,
     TitleHeader,
-    List,
-    ContentLoading
+    ContentLoading,
+    TextInfor,
+    Footer,
+    FavoriteButton,
+    Favorite
 } from './styles';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteCityRequest, setFavoriteCity } from '../../store/ducks/city/actions';
+import { CityProps } from '../../types/CityProps.interface';
+import { ApplicationState } from '../../store';
 
 
 const Details = ({ route }: any) => {
 
     const theme = useTheme();
-    const { city } = route.params;
+    const city: CityProps = route.params?.city;
     const navigation = useNavigation();
+    const dispatch = useDispatch();
+
+    const favoriteId = useSelector((state: ApplicationState) => state.city.favorite_id);
 
     const [forecastDaily, setForecastDaily] = useState<WeatherProps[]>([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -59,7 +70,6 @@ const Details = ({ route }: any) => {
                     console.log(err);
                 }).finally(() => {
 
-                    console.log(data);
                     setForecastDaily(data);
                     setIsLoading(false);
 
@@ -71,6 +81,35 @@ const Details = ({ route }: any) => {
         }
     }
 
+    function handleDeleteCity() {
+
+        try {
+
+            dispatch(deleteCityRequest(city.id));
+            goBack();
+
+        } catch (err) {
+            console.log(err);
+        }
+
+    }
+
+    function goBack() {
+        navigation.goBack()
+    }
+
+    function handleFavoriteCity() {
+
+        try {
+
+            dispatch(setFavoriteCity(city.id));
+
+        } catch (err) {
+            console.log(err);
+        }
+
+    }
+
     return (
         <Container>
 
@@ -78,11 +117,19 @@ const Details = ({ route }: any) => {
                 <ContentHeader>
                     <Button
                         leftIcon="chevron-back"
-                        onPress={() => navigation.goBack()}
+                        onPress={goBack}
                     />
                     <TitleHeader>
                         {city.text}
                     </TitleHeader>
+                    <FavoriteButton
+                        onPress={handleFavoriteCity}
+                    >
+                        <Favorite
+                            name={favoriteId === city.id ? "heart" : "heart-outline"}
+                            isCheck={favoriteId === city.id ? true : false}
+                        />
+                    </FavoriteButton>
                 </ContentHeader>
             </Header>
 
@@ -95,11 +142,31 @@ const Details = ({ route }: any) => {
 
                     :
 
-                    <List
-                        data={forecastDaily}
-                        keyExtractor={(item: any) => item.date}
-                        renderItem={({ item }) => <CardWeather city={city} data={item} />}
-                    />
+                    <ContentBody
+                        showsVerticalScrollIndicator={false}
+                        contentContainerStyle={{ paddingBottom: 30, paddingTop: 10 }}
+                    >
+
+                        <TextInfor>Previsão para os próximos 7 dias</TextInfor>
+
+                        {
+                            forecastDaily.map((item) => <CardWeather city={city} data={item} key={item.date} />)
+                        }
+
+                        <Footer>
+                            <Button
+                                label="Deletar Cidade"
+                                colorLabel={theme.colors.secondary}
+                                sizeLabel={14}
+                                leftIcon="ios-trash-outline"
+                                leftIconColor={theme.colors.secondary}
+                                leftIconSize={16}
+                                onPress={handleDeleteCity}
+                            />
+                        </Footer>
+
+                    </ContentBody>
+
             }
         </Container>
     );

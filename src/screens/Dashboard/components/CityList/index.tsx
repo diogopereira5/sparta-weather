@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator } from "react-native";
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useTheme } from 'styled-components';
 import { CardCity } from '../../../../components/CardCity';
 import openWeatherApi, { API_TOKEN } from '../../../../service/openWeatherApi';
+import { ApplicationState } from '../../../../store';
 import { CityProps } from '../../../../types/CityProps.interface';
 
 import {
@@ -20,12 +21,14 @@ export const CityList = ({ cities }: Props) => {
 
     const theme = useTheme();
 
+    const favoriteId = useSelector((state: ApplicationState) => state.city.favorite_id);
+
     const [cityWeather, setCityWeather] = useState<CityProps[]>([]);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         loadWeatchForCities();
-    }, []);
+    }, [favoriteId, cities]);
 
     //busca tempo de cada cidade da storage
     async function loadWeatchForCities() {
@@ -58,7 +61,11 @@ export const CityList = ({ cities }: Props) => {
 
                     }).finally(() => {
 
-                        setCityWeather(data);
+                        setCityWeather(data.sort(function (a, b) {
+                            if (a.id === favoriteId) { return -1 }
+                            if (b.id === favoriteId) { return 1 }
+                            return 0
+                        }));
 
                     })
 

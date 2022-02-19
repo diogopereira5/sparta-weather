@@ -1,5 +1,7 @@
 import { useNavigation } from '@react-navigation/core';
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { ApplicationState } from '../../store';
 import { CityProps } from '../../types/CityProps.interface';
 
 import {
@@ -19,6 +21,8 @@ interface Props {
 }
 
 export const CardCity = ({ city }: Props) => {
+
+    const favoriteId = useSelector((state: ApplicationState) => state.city.favorite_id);
 
     const navigation = useNavigation();
 
@@ -50,7 +54,7 @@ export const CardCity = ({ city }: Props) => {
                 <Temperature>
                     {`${city?.weather?.temp.toFixed(0)}°`}
                 </Temperature>
-                <Favorite name="heart-outline" />
+                <Favorite name={favoriteId === city.id ? "heart" : "heart-outline"} />
             </ContentRight>
 
         </Container>

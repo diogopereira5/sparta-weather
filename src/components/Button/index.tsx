@@ -10,21 +10,45 @@ import {
 
 interface Props extends TouchableOpacityProps {
     label?: string,
+    sizeLabel?: number,
+    colorLabel?: string,
     leftIcon?: keyof typeof Ionicons.glyphMap; //typagem de icon
+    leftIconColor?: string,
+    leftIconSize?: number,
     colorButton?: string,
+    sizeButton?: "large" | "small";
 }
 
-export const Button = ({ label, leftIcon, colorButton, ...rest }: Props) => {
+export const Button = ({
+    label,
+    sizeLabel,
+    colorLabel,
+    leftIcon,
+    leftIconColor,
+    leftIconSize,
+    colorButton,
+    sizeButton,
+    ...rest }: Props) => {
     return (
         <Container
             {...rest}
             colorButton={colorButton}
+            sizeButton={sizeButton}
         >
             {
-                leftIcon && <Icon name={leftIcon} />
+                leftIcon && <Icon
+                    name={leftIcon}
+                    color={leftIconColor}
+                    size={leftIconSize}
+                />
             }
             {
-                label && <Title>{label}</Title>
+                label && <Title
+                    sizeLabel={sizeLabel}
+                    colorLabel={colorLabel}
+                >
+                    {label}
+                </Title>
             }
         </Container>
     );

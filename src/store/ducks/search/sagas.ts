@@ -24,7 +24,7 @@ function* handleSearchCity(action: FetchAction) {
             state: item.context[0]?.text,
             country: item.context[1]?.text,
             longitude: item.geometry.coordinates[0],
-            latitude: item.geometry.coordinates[1]
+            latitude: item.geometry.coordinates[1],
           });
 
         });
