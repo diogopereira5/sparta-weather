@@ -7,6 +7,7 @@ export enum CityTypes {
   GET_ALL_CITIES_SUCCESS = '@city/GET_ALL_CITIES_SUCCESS',
   DELETE_CITY_REQUEST = "@city/DELETE_CITY_REQUEST",
   DELETE_CITY_SUCCESS = "@city/DELETE_CITY_SUCCESS",
+  SET_FAVORITE_CITY = "@city/SET_FAVORITE_CITY",
 }
 
 export interface City {

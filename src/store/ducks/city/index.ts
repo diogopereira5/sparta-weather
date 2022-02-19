@@ -15,6 +15,9 @@ const reducer: Reducer<CityState, FetchAction> = (state = initialState, action: 
     case CityTypes.DELETE_CITY_SUCCESS:
       return { ...state, city: action.payload };
 
+    case CityTypes.SET_FAVORITE_CITY:
+      return { ...state, favorite_id: action.payload };
+
     default:
       return state;
   }

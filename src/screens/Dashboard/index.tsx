@@ -19,6 +19,7 @@ const Dashboard: React.FC = () => {
 
   const listSearch: CityProps[] = useSelector((state: ApplicationState) => state.search.search);
   const citiesStored: CityProps[] = useSelector((state: ApplicationState) => state.city.city);
+  const favoriteId = useSelector((state: ApplicationState) => state.city.favorite_id);
 
   const [cities, setCities] = useState<CityProps[]>([]);
 
@@ -35,7 +36,6 @@ const Dashboard: React.FC = () => {
     if (citiesStored.length > 0) {
       setCities(citiesStored);
     }
-
   }
 
   return (

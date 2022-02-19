@@ -17,10 +17,13 @@ import {
     ContentLoading,
     TextInfor,
     Footer,
+    FavoriteButton,
+    Favorite
 } from './styles';
-import { useDispatch } from 'react-redux';
-import { deleteCityRequest } from '../../store/ducks/city/actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteCityRequest, setFavoriteCity } from '../../store/ducks/city/actions';
 import { CityProps } from '../../types/CityProps.interface';
+import { ApplicationState } from '../../store';
 
 
 const Details = ({ route }: any) => {
@@ -29,6 +32,8 @@ const Details = ({ route }: any) => {
     const city: CityProps = route.params?.city;
     const navigation = useNavigation();
     const dispatch = useDispatch();
+
+    const favoriteId = useSelector((state: ApplicationState) => state.city.favorite_id);
 
     const [forecastDaily, setForecastDaily] = useState<WeatherProps[]>([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -93,6 +98,18 @@ const Details = ({ route }: any) => {
         navigation.goBack()
     }
 
+    function handleFavoriteCity() {
+
+        try {
+
+            dispatch(setFavoriteCity(city.id));
+
+        } catch (err) {
+            console.log(err);
+        }
+
+    }
+
     return (
         <Container>
 
@@ -105,6 +122,14 @@ const Details = ({ route }: any) => {
                     <TitleHeader>
                         {city.text}
                     </TitleHeader>
+                    <FavoriteButton
+                        onPress={handleFavoriteCity}
+                    >
+                        <Favorite
+                            name={favoriteId === city.id ? "heart" : "heart-outline"}
+                            isCheck={favoriteId === city.id ? true : false}
+                        />
+                    </FavoriteButton>
                 </ContentHeader>
             </Header>
 

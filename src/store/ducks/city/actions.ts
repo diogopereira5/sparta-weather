@@ -7,3 +7,5 @@ export const storeCitySuccess = (payload: CityProps[]) => action(CityTypes.STORE
 
 export const deleteCityRequest = (payload: string) => action(CityTypes.DELETE_CITY_REQUEST, payload);
 export const deleteCitySuccess = (payload: CityProps[]) => action(CityTypes.DELETE_CITY_SUCCESS, payload);
+
+export const setFavoriteCity = (payload: string) => action(CityTypes.SET_FAVORITE_CITY, payload);
