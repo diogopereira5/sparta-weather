@@ -46,10 +46,21 @@ export const TemperatureDetail = styled.Text`
     font-size: ${RFValue(12)}px;
 `;
 
+export const ContentTemperature = styled.View`
+    flex-direction: row;
+`;
+
 export const Temperature = styled.Text`
     font-family: ${({ theme }) => theme.fonts.regular};
     color: ${({ theme }) => theme.colors.primary};
     font-size: ${RFValue(34)}px;
+`;
+
+export const Units = styled.Text`
+    font-family: ${({ theme }) => theme.fonts.regular};
+    color: ${({ theme }) => theme.colors.primary};
+    font-size: ${RFValue(14)}px;
+    padding-top: 3px;
 `;
 
 export const Favorite = styled(Ionicons)`
