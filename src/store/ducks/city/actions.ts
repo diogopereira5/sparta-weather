@@ -9,3 +9,4 @@ export const deleteCityRequest = (payload: string) => action(CityTypes.DELETE_CI
 export const deleteCitySuccess = (payload: CityProps[]) => action(CityTypes.DELETE_CITY_SUCCESS, payload);
 
 export const setFavoriteCity = (payload: string) => action(CityTypes.SET_FAVORITE_CITY, payload);
+export const setUnitsConfig = (payload: "metric" | "imperial") => action(CityTypes.SET_UNITS_CONFIG, payload);

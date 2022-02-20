@@ -34,6 +34,7 @@ const Details = ({ route }: any) => {
     const dispatch = useDispatch();
 
     const favoriteId = useSelector((state: ApplicationState) => state.city.favorite_id);
+    const unitsStore = useSelector((state: ApplicationState) => state.city.units);
 
     const [forecastDaily, setForecastDaily] = useState<WeatherProps[]>([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -48,7 +49,7 @@ const Details = ({ route }: any) => {
 
             let data: WeatherProps[] = [];
 
-            await openWeatherApi.get(`/onecall?lat=${city.latitude}&lon=${city.longitude}&exclude=current,minutely,hourly,alerts&lang=pt_br&units=metric&appid=${API_TOKEN}`)
+            await openWeatherApi.get(`/onecall?lat=${city.latitude}&lon=${city.longitude}&exclude=current,minutely,hourly,alerts&lang=pt_br&units=${unitsStore}&appid=${API_TOKEN}`)
                 .then((res: any) => {
 
                     res?.data?.daily.map((item: any) => {

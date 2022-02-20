@@ -22,23 +22,28 @@ export const CityList = ({ cities }: Props) => {
     const theme = useTheme();
 
     const favoriteId = useSelector((state: ApplicationState) => state.city.favorite_id);
+    const unitsStore = useSelector((state: ApplicationState) => state.city.units);
 
     const [cityWeather, setCityWeather] = useState<CityProps[]>([]);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
+
+        console.log(unitsStore);
+
         loadWeatchForCities();
-    }, [favoriteId, cities]);
+    }, [favoriteId, cities, unitsStore]);
 
     //busca tempo de cada cidade da storage
     async function loadWeatchForCities() {
+        setIsLoading(true);
         try {
 
             let data: CityProps[] = [];
 
             cities.forEach(async (item) => {
 
-                await openWeatherApi.get(`/weather?lon=${item.longitude}&lat=${item.latitude}&lang=pt_br&units=metric&APPID=${API_TOKEN}`)
+                await openWeatherApi.get(`/weather?lon=${item.longitude}&lat=${item.latitude}&lang=pt_br&units=${unitsStore}&APPID=${API_TOKEN}`)
                     .then((res: any) => {
 
                         data.push({

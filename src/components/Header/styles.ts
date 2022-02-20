@@ -1,23 +1,24 @@
 import styled from "styled-components/native";
 import { RFValue, RFPercentage } from "react-native-responsive-fontsize";
-import { Ionicons } from "@expo/vector-icons"
+import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons"
+
+interface IconProps {
+    color?: string,
+}
 
 export const Container = styled.View`
-    height: ${RFPercentage(15)}px;
+    height: ${RFPercentage(25)}px;
     background-color: ${({ theme }) => theme.colors.header};
-    flex-direction: row;
-    align-items: flex-end;
-    padding: 0 20px;
-    padding-bottom: 10px;
     box-shadow: 0px 3px 3px rgba(0,0,0,0.15);
+    padding: 16px;
+    justify-content: flex-end;
 `;
 
 export const Content = styled.View`
-    flex: 1;
-    justify-content: space-between;
+    width: 100%;
     flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    min-height: ${RFValue(32)}px;
 `;
 
 export const Title = styled.Text`
@@ -26,19 +27,40 @@ export const Title = styled.Text`
     font-family: ${({ theme }) => theme.fonts.medium};
 `;
 
-export const Icon = styled(Ionicons)`
-    color: ${({ theme }) => theme.colors.text_white};
+export const IconSearch = styled(Ionicons) <IconProps>`
+    color: ${({ theme, color }) => color ? color : theme.colors.text_white};
     font-size: ${RFValue(20)}px;
 `;
 
-export const Button = styled.TouchableOpacity``;
+export const Icon = styled(MaterialCommunityIcons) <IconProps>`
+    color: ${({ theme, color }) => color ? color : theme.colors.text_white};
+    font-size: ${RFValue(22)}px;
+`;
+
+export const Button = styled.TouchableOpacity`
+    height: ${RFValue(30)}px;
+    width: ${RFValue(30)}px;
+    align-items: center;
+    justify-content: center;
+`;
+
+export const ContentInput = styled.View`
+    background: ${({ theme }) => theme.colors.shape};
+    width: 100%;
+    height: ${RFValue(40)}px;
+    border-radius: 5px;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 10px;
+    margin-top: 20px;
+`;
 
 export const Input = styled.TextInput.attrs({
-    placeholderTextColor: "#eaeaea",
+    // placeholderTextColor: "#eaeaea",
 })`
     flex: 1;
-    height: ${RFValue(32)}px;
-    padding: 0 16px;
-    color: ${({ theme }) => theme.colors.text_white};
-    font-size: ${RFValue(15)}px;
+    height: ${RFValue(40)}px;
+    padding: 0 10px;
+    color: ${({ theme }) => theme.colors.text_detail};
+    font-size: ${RFValue(13)}px;
 `;

@@ -1,5 +1,7 @@
 import { useNavigation } from '@react-navigation/core';
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { ApplicationState } from '../../store';
 import { CityProps } from '../../types/CityProps.interface';
 import { WeatherProps } from '../../types/CityWeatherinterface';
 
@@ -12,6 +14,8 @@ import {
     WeatherInfor,
     TemperatureDetail,
     Temperature,
+    ContentTemperature,
+    Units,
 } from './styles';
 
 interface Props {
@@ -21,7 +25,7 @@ interface Props {
 
 export const CardWeather = ({ city, data }: Props) => {
 
-    const navigation = useNavigation();
+    const unitsStore = useSelector((state: ApplicationState) => state.city.units);
 
     const [date, setDate] = useState("");
 
@@ -68,14 +72,19 @@ export const CardWeather = ({ city, data }: Props) => {
                 </WeatherInfor>
 
                 <TemperatureDetail>
-                    {`${data?.temp_min.toFixed(0)}° - ${data?.temp_max.toFixed(0)}°`}
+                    {`${data?.temp_min.toFixed(0)}${unitsStore === "metric" ? '°C' : '°F'}  -  ${data?.temp_max.toFixed(0)}${unitsStore === "metric" ? '°C' : '°F'}`}
                 </TemperatureDetail>
             </Content>
 
             <ContentRight>
-                <Temperature>
-                    {`${data?.temp.toFixed(0)}°`}
-                </Temperature>
+                <ContentTemperature>
+                    <Temperature>
+                        {`${data?.temp.toFixed(0)}`}
+                    </Temperature>
+                    <Units>
+                        {`${unitsStore === "metric" ? '°C' : '°F'}`}
+                    </Units>
+                </ContentTemperature>
             </ContentRight>
 
         </Container>

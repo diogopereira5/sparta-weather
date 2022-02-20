@@ -4,6 +4,7 @@ import { Reducer } from 'redux';
 const initialState: CityState = {
   city: [],
   favorite_id: "",
+  units: "metric",
 };
 
 const reducer: Reducer<CityState, FetchAction> = (state = initialState, action: FetchAction) => {
@@ -17,6 +18,9 @@ const reducer: Reducer<CityState, FetchAction> = (state = initialState, action: 
 
     case CityTypes.SET_FAVORITE_CITY:
       return { ...state, favorite_id: action.payload };
+
+    case CityTypes.SET_UNITS_CONFIG:
+      return { ...state, units: action.payload };
 
     default:
       return state;

@@ -12,7 +12,9 @@ import {
     Locale,
     WeatherInfor,
     TemperatureDetail,
+    ContentTemperature,
     Temperature,
+    Units,
     Favorite
 } from './styles';
 
@@ -23,6 +25,7 @@ interface Props {
 export const CardCity = ({ city }: Props) => {
 
     const favoriteId = useSelector((state: ApplicationState) => state.city.favorite_id);
+    const unitsStore = useSelector((state: ApplicationState) => state.city.units);
 
     const navigation = useNavigation();
 
@@ -51,9 +54,14 @@ export const CardCity = ({ city }: Props) => {
             </Content>
 
             <ContentRight>
-                <Temperature>
-                    {`${city?.weather?.temp.toFixed(0)}°`}
-                </Temperature>
+                <ContentTemperature>
+                    <Temperature>
+                        {`${city?.weather?.temp.toFixed(0)}`}
+                    </Temperature>
+                    <Units>
+                        {`${unitsStore === "metric" ? '°C' : '°F'}`}
+                    </Units>
+                </ContentTemperature>
                 <Favorite name={favoriteId === city.id ? "heart" : "heart-outline"} />
             </ContentRight>
 
