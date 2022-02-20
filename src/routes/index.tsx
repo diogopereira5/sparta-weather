@@ -5,7 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Dashboard from '../screens/Dashboard';
-import Details from '../screens/Details';
+import CityDetails from '../screens/CityDetails';
 
 const Stack = createNativeStackNavigator();
 
@@ -18,7 +18,7 @@ function App() {
                 }}
             >
                 <Stack.Screen name="Dashboard" component={Dashboard} />
-                <Stack.Screen name="Details" component={Details} />
+                <Stack.Screen name="Details" component={CityDetails} />
             </Stack.Navigator>
         </NavigationContainer>
     );

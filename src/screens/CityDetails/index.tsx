@@ -27,7 +27,7 @@ import {
     Favorite
 } from './styles';
 
-const Details = ({ route }: any) => {
+const CityDetails = ({ route }: any) => {
 
     const theme = useTheme();
     const city: CityProps = route.params?.city;
@@ -174,4 +174,4 @@ const Details = ({ route }: any) => {
     );
 }
 
-export default Details;
+export default CityDetails;
