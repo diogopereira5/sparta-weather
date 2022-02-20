@@ -45,10 +45,7 @@ export const CardWeather = ({ city, data }: Props) => {
 
 
     return (
-        <Container
-            activeOpacity={0.5}
-            onPress={() => navigation.navigate("Details", { city_id: city.id })}
-        >
+        <Container>
 
             <Content>
                 <Title>
