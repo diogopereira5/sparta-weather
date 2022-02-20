@@ -39,7 +39,7 @@ export const CardWeather = ({ city, data }: Props) => {
             setDate("Amanhã");
         } else {
             setDate(
-                String(Intl.DateTimeFormat('pt-BR', {
+                String(new Intl.DateTimeFormat('pt-BR', {
                     weekday: "long"
                 }).format(new window.Date(data.date * 1000)))
             )
@@ -60,7 +60,7 @@ export const CardWeather = ({ city, data }: Props) => {
 
                 <Date>
                     {
-                        Intl.DateTimeFormat('pt-BR', {
+                        new Intl.DateTimeFormat('pt-BR', {
                             day: "numeric",
                             month: "long"
                         }).format(new window.Date(data.date * 1000))
