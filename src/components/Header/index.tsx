@@ -21,6 +21,7 @@ export const Header = () => {
 
     const dispatch = useDispatch();
     const theme = useTheme();
+    const timeout: any = React.useRef();
 
     const searchStore = useSelector((state: ApplicationState) => state.search.search);
     const unitsStore = useSelector((state: ApplicationState) => state.city.units);
@@ -42,12 +43,29 @@ export const Header = () => {
     }, [searchStore])
 
     //busca por uma cidade na api mapbox
-    function handleSearchCity() {
+    function handleSearchCity(text: string, time: number = 1200) {
+
         try {
-            dispatch(getSearchRequest(valueSearch));
+            setValueSearch(text);
+            clearTimeout(timeout.current);
+
+            timeout.current = setTimeout(() => {
+                if (text.length > 2) {
+                    try {
+                        if (valueSearch.length > 0) {
+                            dispatch(getSearchRequest(valueSearch));
+                        }
+                    } catch (err) {
+                        console.log(err);
+                    }
+
+                }
+            }, time);
         } catch (err) {
             console.log(err);
         }
+
+
     }
 
     // close search para estado inicial
@@ -89,10 +107,8 @@ export const Header = () => {
                     <Input
                         placeholder="Busque por uma cidade"
                         value={valueSearch}
-                        onChangeText={setValueSearch}
-                        // autoFocus
-                        onEndEditing={handleSearchCity}
-                        onSubmitEditing={handleSearchCity}
+                        onChangeText={handleSearchCity}
+                        onSubmitEditing={() => handleSearchCity(valueSearch, 0)}
                         returnKeyType="search"
                         numberOfLines={1}
                     />

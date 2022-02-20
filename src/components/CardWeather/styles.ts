@@ -22,6 +22,7 @@ export const Title = styled.Text`
     font-family: ${({ theme }) => theme.fonts.regular};
     color: ${({ theme }) => theme.colors.text};
     font-size: ${RFValue(18)}px;
+    text-transform: capitalize;
 `;
 
 export const Date = styled.Text`
