@@ -49,7 +49,7 @@ const Details = ({ route }: any) => {
 
             let data: WeatherProps[] = [];
 
-            await openWeatherApi.get(`/onecall?lat=${city.latitude}&lon=${city.longitude}&exclude=current,minutely,hourly,alerts&lang=pt_br&units=${unitsStore}&appid=${API_TOKEN}`)
+            await openWeatherApi.get(`/onecall?lat=${city.latitude}&lon=${city.longitude}&exclude=current,minutely,hourly,alerts&lang=pt_br&units=${unitsStore ? unitsStore : "metric"}&appid=${API_TOKEN}`)
                 .then((res: any) => {
 
                     res?.data?.daily.map((item: any) => {
