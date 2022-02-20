@@ -2,17 +2,14 @@
 
 O Spatar Weather App, uma das melhores aplicações de tempo, uma das melhores opções para você, simples e pratico.
 
-## 🔧 Funçoes (opcional)
+## 🔧 Funçoes 
 
-### Função 01:
 - Procure e adicione cidades do seu interesse.
-
-### Função 02:
 - Veja a previsão detalhada dos próximos dias.
 
 ## Expo Link
 
-Computer Version:
+Tenha o ExpoGo instalado em seu dispositivo móvel, e abra através do link a seguir:
 
 [![Expo Go]](https://expo.dev/@diogopereiraas/sparta-weather)
 
