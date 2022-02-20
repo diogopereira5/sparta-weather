@@ -1,5 +1,5 @@
-import { useNavigation } from '@react-navigation/core';
 import React, { useEffect, useState } from 'react';
+import 'intl';
 import { useSelector } from 'react-redux';
 import { ApplicationState } from '../../store';
 import { CityProps } from '../../types/CityProps.interface';

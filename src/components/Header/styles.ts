@@ -7,7 +7,7 @@ interface IconProps {
 }
 
 export const Container = styled.View`
-    height: ${RFPercentage(25)}px;
+    height: ${RFPercentage(24)}px;
     background-color: ${({ theme }) => theme.colors.header};
     box-shadow: 0px 3px 3px rgba(0,0,0,0.15);
     padding: 16px;
