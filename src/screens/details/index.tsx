@@ -2,11 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/core';
 import { ActivityIndicator } from 'react-native';
 import { useTheme } from 'styled-components';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Button } from '../../components/Button';
 import { CardWeather } from '../../components/CardWeather';
-import openWeatherApi, { API_TOKEN } from '../../service/openWeatherApi';
+
 import { WeatherProps } from '../../types/CityWeatherinterface';
+import { CityProps } from '../../types/CityProps.interface';
+
+import openWeatherApi, { API_TOKEN } from '../../service/openWeatherApi';
+import { deleteCityRequest, setFavoriteCity } from '../../store/ducks/city/actions';
+import { ApplicationState } from '../../store';
 
 import {
     Container,
@@ -20,11 +26,6 @@ import {
     FavoriteButton,
     Favorite
 } from './styles';
-import { useDispatch, useSelector } from 'react-redux';
-import { deleteCityRequest, setFavoriteCity } from '../../store/ducks/city/actions';
-import { CityProps } from '../../types/CityProps.interface';
-import { ApplicationState } from '../../store';
-
 
 const Details = ({ route }: any) => {
 

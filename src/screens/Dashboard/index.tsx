@@ -15,7 +15,7 @@ import {
 import { CityProps } from '../../types/CityProps.interface';
 import { CityList } from './components/CityList';
 
-const Dashboard: React.FC = () => {
+const Dashboard = () => {
 
   const listSearch: CityProps[] = useSelector((state: ApplicationState) => state.search.search);
   const citiesStored: CityProps[] = useSelector((state: ApplicationState) => state.city.city);
