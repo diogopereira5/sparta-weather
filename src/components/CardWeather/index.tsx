@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import 'intl';
+import 'intl/locale-data/jsonp/pt-BR';
 import { useSelector } from 'react-redux';
 import { ApplicationState } from '../../store';
 import { CityProps } from '../../types/CityProps.interface';
