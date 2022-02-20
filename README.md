@@ -1,5 +1,3 @@
-<img src="exemplo-image.png" alt="exemplo imagem">
-
 # Sparta Weather App
 
 O Spatar Weather App, uma das melhores aplicações de tempo, uma das melhores opções para você, simples e pratico.
@@ -16,7 +14,7 @@ O Spatar Weather App, uma das melhores aplicações de tempo, uma das melhores o
 
 Computer Version:
 
-[![Windows]](https://expo.dev/@diogopereiraas/sparta-weather)
+[![Expo Go]](https://expo.dev/@diogopereiraas/sparta-weather)
 
 ## 🚀 Instalando Sparta Weather
 
