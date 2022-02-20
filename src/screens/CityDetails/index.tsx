@@ -104,7 +104,11 @@ const CityDetails = ({ route }: any) => {
 
         try {
 
-            dispatch(setFavoriteCity(city.id));
+            if (city.id === favoriteId) {
+                dispatch(setFavoriteCity(""));
+            } else {
+                dispatch(setFavoriteCity(city.id));
+            }
 
         } catch (err) {
             console.log(err);

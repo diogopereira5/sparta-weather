@@ -20,26 +20,6 @@ const Dashboard = () => {
   const listSearch: CityProps[] = useSelector((state: ApplicationState) => state.search.search);
   const citiesStored: CityProps[] = useSelector((state: ApplicationState) => state.city.city);
 
-  const [cities, setCities] = useState<CityProps[]>([]);
-
-  useEffect(() => {
-    loadCities();
-  }, [citiesStored, listSearch])
-
-  useFocusEffect(useCallback(() => {
-    loadCities()
-  }, [citiesStored]))
-
-  async function loadCities() {
-
-    if (citiesStored.length > 0) {
-      setCities(citiesStored);
-    } else {
-      setCities([])
-    }
-
-  }
-
   return (
     <Container>
 
@@ -51,8 +31,8 @@ const Dashboard = () => {
           listSearch && listSearch.length > 0 ?
             <SearchList cities={listSearch} />
             :
-            cities && cities.length > 0 ?
-              <CityList cities={cities} />
+            citiesStored && citiesStored.length > 0 ?
+              <CityList />
               :
               <Apresentation />
         }
