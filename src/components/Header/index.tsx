@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Keyboard } from "react-native";
 import { useDispatch, useSelector } from 'react-redux';
 import { useTheme } from 'styled-components';
 import { ApplicationState } from '../../store';
@@ -53,6 +54,7 @@ export const Header = () => {
     function handleCloseSearch() {
         setValueSearch("");
         dispatch(setCleanSearch());
+        Keyboard.dismiss()
     }
 
     function handleChangeUnitsConfig() {
