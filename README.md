@@ -32,7 +32,7 @@ yarn install ou npm install
 ```
 
 ```
-yarn start
+yarn start ou expo start
 ```
 
-<p align="center">Copyright © 2021 Seu Usuario</p>
+<p align="center">Copyright © 2022 Diogo Pereira</p>
