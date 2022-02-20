@@ -17,6 +17,7 @@ interface Props extends TouchableOpacityProps {
     leftIconSize?: number,
     colorButton?: string,
     sizeButton?: "large" | "small";
+    children?: any,
 }
 
 export const Button = ({
@@ -28,7 +29,9 @@ export const Button = ({
     leftIconSize,
     colorButton,
     sizeButton,
-    ...rest }: Props) => {
+    children = null,
+    ...rest
+}: Props) => {
     return (
         <Container
             {...rest}
@@ -50,6 +53,7 @@ export const Button = ({
                     {label}
                 </Title>
             }
+            {children}
         </Container>
     );
 }
