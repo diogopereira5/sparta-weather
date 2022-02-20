@@ -1,22 +1,32 @@
-<img src="exemplo-image.png" alt="exemplo imagem">
-
 # Sparta Weather App
 
-O Spatar Weather App, uma das melhores aplicações de tempo, uma das melhores opções para você, simples e pratico.
+O Spatar Weather App, um projeto desenvolvido com intenções para mostrar conhecimento usando React-Native. Um aplicativo que mostra a previsão do tempo para suas cidades preferidas.
 
-## 🔧 Funçoes (opcional)
+## 🔧 Funçoes 
 
-### Função 01:
 - Procure e adicione cidades do seu interesse.
-
-### Função 02:
 - Veja a previsão detalhada dos próximos dias.
+
+## 🔧 Tecnologias 
+
+- React-Native;
+- Expo;
+- Axios;
+- Redux-Saga;
+- React-Redux;
+- Styled-Components;
+- Expo-Fonts.
+
+## 🔧 APIs 
+
+- [OpenWeatherMap](https://openweathermap.org/)
+- [MapBox](https://www.mapbox.com/)
 
 ## Expo Link
 
-Computer Version:
+Tenha o ExpoGo instalado em seu dispositivo móvel, e abra através do link a seguir:
 
-[![Windows]](https://expo.dev/@diogopereiraas/sparta-weather)
+[![Expo Go]](https://expo.dev/@diogopereiraas/sparta-weather)
 
 ## 🚀 Instalando Sparta Weather
 
@@ -27,7 +37,7 @@ yarn install ou npm install
 ```
 
 ```
-yarn start
+yarn start ou expo start
 ```
 
-<p align="center">Copyright © 2021 Seu Usuario</p>
+<p align="center">Copyright © 2022 Diogo Pereira</p>
