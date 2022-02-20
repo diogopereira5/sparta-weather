@@ -28,9 +28,6 @@ export const CityList = ({ cities }: Props) => {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-
-        console.log(unitsStore);
-
         loadWeatchForCities();
     }, [favoriteId, cities, unitsStore]);
 
