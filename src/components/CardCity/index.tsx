@@ -49,7 +49,7 @@ export const CardCity = ({ city }: Props) => {
                 </WeatherInfor>
 
                 <TemperatureDetail>
-                    {`${city?.weather?.temp_min.toFixed(0)}° - ${city?.weather?.temp_max.toFixed(0)}°`}
+                    {`${city?.weather?.temp_min.toFixed(0)}${unitsStore === "metric" ? '°C' : '°F'}  -  ${city?.weather?.temp_max.toFixed(0)}${unitsStore === "metric" ? '°C' : '°F'}`}
                 </TemperatureDetail>
             </Content>
 
