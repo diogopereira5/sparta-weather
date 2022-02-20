@@ -24,7 +24,7 @@ const Dashboard: React.FC = () => {
 
   useEffect(() => {
     loadCities();
-  }, [])
+  }, [citiesStored, listSearch])
 
   useFocusEffect(useCallback(() => {
     loadCities()
@@ -34,6 +34,8 @@ const Dashboard: React.FC = () => {
 
     if (citiesStored.length > 0) {
       setCities(citiesStored);
+    } else {
+      setCities([])
     }
 
   }
