@@ -1,11 +1,21 @@
 # Sparta Weather App
 
-O Spatar Weather App, uma das melhores aplicações de tempo, uma das melhores opções para você, simples e pratico.
+O Spatar Weather App, um projeto desenvolvido com intenções para mostrar conhecimento usando React-Native. Um aplicativo que mostra a previsão do tempo para suas cidades preferidas.
 
 ## 🔧 Funçoes 
 
 - Procure e adicione cidades do seu interesse.
 - Veja a previsão detalhada dos próximos dias.
+
+## 🔧 Tecnologias 
+
+- React-Native;
+- Expo;
+- Axios;
+- Redux-Saga;
+- React-Redux;
+- Styled-Components;
+- Expo-Fonts.
 
 ## Expo Link
 
