@@ -17,6 +17,11 @@ O Spatar Weather App, um projeto desenvolvido com intenções para mostrar conhe
 - Styled-Components;
 - Expo-Fonts.
 
+## 🔧 APIs 
+
+- [OpenWeatherMap](https://openweathermap.org/)
+- [MapBox](https://www.mapbox.com/)
+
 ## Expo Link
 
 Tenha o ExpoGo instalado em seu dispositivo móvel, e abra através do link a seguir:
